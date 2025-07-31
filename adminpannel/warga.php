@@ -1,0 +1,241 @@
+<?php 
+include '../db.php'; 
+include 'auth.php';
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Warga - Admin Dashboard</title>
+    <link href="../bootstrap-5.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: #667eea !important;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #495057 !important;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #667eea !important;
+            transform: translateY(-1px);
+        }
+        .main-content {
+            min-height: calc(100vh - 80px);
+            padding: 2rem 0;
+        }
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        .table {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        .table thead th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+            padding: 1rem;
+        }
+        .table tbody tr {
+            transition: all 0.3s ease;
+        }
+        .table tbody tr:hover {
+            background-color: rgba(102, 126, 234, 0.05);
+            transform: scale(1.01);
+        }
+        .btn-sm {
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn-sm:hover {
+            transform: translateY(-1px);
+        }
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stats-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="home.php">
+                <i class="fas fa-shield-alt me-2"></i>Admin Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="kk.php">
+                            <i class="fas fa-users me-1"></i>Data KK
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="warga.php">
+                            <i class="fas fa-user me-1"></i>Data Warga
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="laporan.php">
+                            <i class="fas fa-clipboard-list me-1"></i>Data Laporan
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">
+                            <i class="fas fa-sign-out-alt me-1"></i>Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1 class="fw-bold mb-2">
+                            <i class="fas fa-users me-3"></i>Data Warga
+                        </h1>
+                        <p class="mb-0 opacity-75">Kelola data warga perorangan</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <a href="tambah_warga.php" class="btn btn-light btn-custom">
+                            <i class="fas fa-plus me-2"></i>Tambah Warga
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <?php
+            $total_warga = $conn->query("SELECT COUNT(*) as total FROM warga")->fetch_assoc()['total'];
+            ?>
+            
+            <div class="row mb-4">
+                <div class="col-12 col-md-4">
+                    <div class="stats-card">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="fw-bold text-primary mb-1"><?php echo $total_warga; ?></h3>
+                                <p class="mb-0 text-muted">Total Warga</p>
+                            </div>
+                            <div class="col-4 text-end">
+                                <i class="fas fa-users fa-2x text-primary opacity-25"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card p-4">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-user me-2"></i>Nama</th>
+                                <th><i class="fas fa-map-marker-alt me-2"></i>Alamat</th>
+                                <th><i class="fas fa-id-card me-2"></i>NIK</th>
+                                <th class="text-center"><i class="fas fa-cogs me-2"></i>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $result = $conn->query("SELECT * FROM warga ORDER BY username ASC");
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>
+                                    <td class='align-middle'>
+                                        <div class='d-flex align-items-center'>
+                                            <div class='avatar-sm bg-primary rounded-circle d-flex align-items-center justify-content-center me-3'>
+                                                <i class='fas fa-user text-white'></i>
+                                            </div>
+                                            <div>
+                                                <strong>{$row['username']}</strong>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class='align-middle'>{$row['alamat']}</td>
+                                    <td class='align-middle'>{$row['nik']}</td>
+                                    <td class='align-middle text-center'>
+                                        <div class='btn-group' role='group'>
+                                            <a href='edit_warga.php?id={$row['id']}' class='btn btn-sm btn-warning me-1' title='Edit'>
+                                                <i class='fas fa-edit'></i>
+                                            </a>
+                                            <a href='hapus_warga.php?id={$row['id']}' class='btn btn-sm btn-danger' 
+                                               onclick='return confirm(\"Yakin ingin menghapus warga ini?\")' title='Hapus'>
+                                                <i class='fas fa-trash'></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>";
+                            }
+                        } else {
+                            echo "<tr>
+                                <td colspan='4' class='text-center py-4'>
+                                    <div class='text-muted'>
+                                        <i class='fas fa-inbox fa-3x mb-3 opacity-25'></i>
+                                        <p class='mb-0'>Belum ada data warga</p>
+                                    </div>
+                                </td>
+                            </tr>";
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
