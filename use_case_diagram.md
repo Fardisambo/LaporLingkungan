@@ -1,105 +1,18 @@
 # USE CASE DIAGRAM LAPORIN LINGKUNGAN v2.0
 
 ## 📋 DAFTAR ISI
-1. [Overview Use Case](#overview-use-case)
-2. [User Use Cases](#user-use-cases)
-3. [RT Use Cases](#rt-use-cases)
-4. [Admin Use Cases](#admin-use-cases)
-5. [System Use Cases](#system-use-cases)
-6. [Extended Use Cases](#extended-use-cases)
-7. [Use Case Descriptions](#use-case-descriptions)
+1. [User Use Cases](#user-use-cases)
+2. [RT Use Cases](#rt-use-cases)
+3. [Admin Use Cases](#admin-use-cases)
+4. [System Use Cases](#system-use-cases)
+5. [Extended Use Cases](#extended-use-cases)
+6. [Use Case Descriptions](#use-case-descriptions)
 
 ---
 
-## 1. OVERVIEW USE CASE
-
-```mermaid
-flowchart LR
-    actor_user[👤 User<br/>Masyarakat]
-    actor_rt[🏘️ RT<br/>Ketua RT]
-    actor_admin[👨‍💼 Admin<br/>Administrator]
-
-    subgraph System[Aplikasi Laporin Lingkungan v2.0]
-        subgraph Auth[Authentication]
-            UC_Login([Login])
-            UC_GoogleLogin([Google OAuth])
-            UC_Register([Register])
-            UC_Logout([Logout])
-        end
-        
-        subgraph UserFeatures[User Features]
-            UC_Dashboard([Dashboard])
-            UC_BuatLaporan([Buat Laporan])
-            UC_LihatLaporan([Lihat Laporan])
-            UC_EditLaporan([Edit Laporan])
-            UC_Profil([Kelola Profil])
-            UC_Bantuan([Bantuan])
-        end
-        
-        subgraph Management[Management Features]
-            UC_KelolaLaporan([Kelola Laporan])
-            UC_KelolaWarga([Kelola Warga])
-            UC_KelolaKK([Kelola KK])
-            UC_KelolaUser([Kelola User])
-        end
-        
-        subgraph SystemFeatures[System Features]
-            UC_UploadFoto([Upload Foto])
-            UC_Statistik([Statistik])
-            UC_Komentar([Komentar])
-        end
-    end
-
-    %% User connections
-    actor_user --> UC_Register
-    actor_user --> UC_Login
-    actor_user --> UC_GoogleLogin
-    actor_user --> UC_Dashboard
-    actor_user --> UC_BuatLaporan
-    actor_user --> UC_LihatLaporan
-    actor_user --> UC_EditLaporan
-    actor_user --> UC_Profil
-    actor_user --> UC_Bantuan
-    actor_user --> UC_Logout
-
-    %% RT connections
-    actor_rt --> UC_Login
-    actor_rt --> UC_Dashboard
-    actor_rt --> UC_KelolaLaporan
-    actor_rt --> UC_KelolaWarga
-    actor_rt --> UC_KelolaKK
-    actor_rt --> UC_Statistik
-    actor_rt --> UC_Profil
-    actor_rt --> UC_Logout
-
-    %% Admin connections
-    actor_admin --> UC_Login
-    actor_admin --> UC_Dashboard
-    actor_admin --> UC_KelolaLaporan
-    actor_admin --> UC_KelolaWarga
-    actor_admin --> UC_KelolaKK
-    actor_admin --> UC_KelolaUser
-    actor_admin --> UC_Statistik
-    actor_admin --> UC_Profil
-    actor_admin --> UC_Logout
-
-    %% Extend relationships
-    UC_BuatLaporan -.->|<<extend>>| UC_UploadFoto
-    UC_KelolaLaporan -.->|<<include>>| UC_Statistik
-    UC_KelolaLaporan -.->|<<extend>>| UC_Komentar
-
-    style System fill:#f8f9fa,stroke:#dee2e6,stroke-width:3px
-    style Auth fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
-    style UserFeatures fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
-    style Management fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style SystemFeatures fill:#fff3e0,stroke:#ff9800,stroke-width:2px
-    style UC_GoogleLogin fill:#4285f4,stroke:#333,stroke-width:2px,color:#fff
-    style UC_Statistik fill:#ffd93d,stroke:#333,stroke-width:2px,color:#000
-```
-
 ---
 
-## 2. USER USE CASES
+## 1. USER USE CASES
 
 ```mermaid
 flowchart LR
@@ -162,7 +75,7 @@ flowchart LR
 
 ---
 
-## 3. RT USE CASES
+## 2. RT USE CASES
 
 ```mermaid
 flowchart LR
@@ -222,7 +135,7 @@ flowchart LR
 
 ---
 
-## 4. ADMIN USE CASES
+## 3. ADMIN USE CASES
 
 ```mermaid
 flowchart LR
@@ -287,7 +200,7 @@ flowchart LR
 
 ---
 
-## 5. SYSTEM USE CASES
+## 4. SYSTEM USE CASES
 
 ```mermaid
 flowchart TD
@@ -331,7 +244,7 @@ flowchart TD
 
 ---
 
-## 6. EXTENDED USE CASES
+## 5. EXTENDED USE CASES
 
 ```mermaid
 flowchart TD
@@ -371,7 +284,7 @@ flowchart TD
 
 ---
 
-## 7. USE CASE DESCRIPTIONS
+## 6. USE CASE DESCRIPTIONS
 
 ### 🔐 Authentication Use Cases
 
@@ -531,3 +444,4 @@ Aplikasi Laporin Lingkungan v2.0 memiliki **18 use case utama** yang dibagi menj
 - Notifications
 
 Sistem ini dirancang dengan **role-based access control** yang jelas, dimana setiap role memiliki permission yang berbeda sesuai dengan tanggung jawabnya dalam sistem pelaporan lingkungan.
+
