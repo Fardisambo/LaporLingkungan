@@ -5,8 +5,7 @@
 2. [RT Use Cases](#rt-use-cases)
 3. [Admin Use Cases](#admin-use-cases)
 4. [System Use Cases](#system-use-cases)
-5. [Extended Use Cases](#extended-use-cases)
-6. [Use Case Descriptions](#use-case-descriptions)
+5. [Use Case Descriptions](#use-case-descriptions)
 
 ---
 
@@ -242,49 +241,10 @@ flowchart TD
     style UC_GoogleOAuth fill:#4285f4,stroke:#333,stroke-width:2px,color:#fff
 ```
 
----
-
-## 5. EXTENDED USE CASES
-
-```mermaid
-flowchart TD
-    subgraph Extended[Extended Use Cases]
-        subgraph Report[Report Management]
-            UC_ReportWorkflow([Report Workflow])
-            UC_StatusTracking([Status Tracking])
-            UC_Notification([Notification System])
-        end
-        
-        subgraph Data[Data Management]
-            UC_DataExport([Data Export])
-            UC_DataImport([Data Import])
-            UC_DataBackup([Data Backup])
-        end
-        
-        subgraph Analytics[Analytics]
-            UC_ReportAnalytics([Report Analytics])
-            UC_UserAnalytics([User Analytics])
-            UC_SystemAnalytics([System Analytics])
-        end
-    end
-
-    %% Extended relationships
-    UC_ReportWorkflow -.->|<<include>>| UC_StatusTracking
-    UC_StatusTracking -.->|<<extend>>| UC_Notification
-    UC_DataExport -.->|<<include>>| UC_DataBackup
-    UC_ReportAnalytics -.->|<<include>>| UC_SystemAnalytics
-    UC_UserAnalytics -.->|<<include>>| UC_SystemAnalytics
-
-    style Extended fill:#f8f9fa,stroke:#dee2e6,stroke-width:3px
-    style Report fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
-    style Data fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
-    style Analytics fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style UC_Notification fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
-```
 
 ---
 
-## 6. USE CASE DESCRIPTIONS
+## 5. USE CASE DESCRIPTIONS
 
 ### 🔐 Authentication Use Cases
 
@@ -444,4 +404,5 @@ Aplikasi Laporin Lingkungan v2.0 memiliki **18 use case utama** yang dibagi menj
 - Notifications
 
 Sistem ini dirancang dengan **role-based access control** yang jelas, dimana setiap role memiliki permission yang berbeda sesuai dengan tanggung jawabnya dalam sistem pelaporan lingkungan.
+
 
