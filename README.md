@@ -5,8 +5,14 @@ Platform pelaporan lingkungan modern yang memudahkan masyarakat melaporkan masal
 
 ## Screenshot
 
-### Dashboard
+### 1. Dashboard
 ![image alt](https://github.com/Fardisambo/LaporLingkungan/blob/9382458110e59130312e3a3922f13f0d53e57fbc/screenshot/Screenshot%202025-09-18%20192640.png)
+
+### 2. Halaman Laporan
+![image alt](https://github.com/Fardisambo/LaporLingkungan/blob/fbd7d23580946335d62a6ca9f3f23d93c93123f2/screenshot/Screenshot%202025-09-18%20193219.png)
+
+### 3. Db Diagram
+![image alt](https://github.com/Fardisambo/LaporLingkungan/blob/c1a23b4ddd71645fe9eedbd31a1c5f01f93726f2/screenshot/Screenshot%202025-09-18%20200807.png)
 
 ## 🌟 Fitur Utama
 
