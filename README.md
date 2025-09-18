@@ -2,6 +2,12 @@
 
 Platform pelaporan lingkungan modern yang memudahkan masyarakat melaporkan masalah lingkungan dengan sistem autentikasi yang aman dan antarmuka yang user-friendly.
 
+
+## Screenshot
+
+### Dashboard
+![image alt](https://github.com/Fardisambo/LaporLingkungan/blob/9382458110e59130312e3a3922f13f0d53e57fbc/screenshot/Screenshot%202025-09-18%20192640.png)
+
 ## 🌟 Fitur Utama
 
 ### 1. Sistem Autentikasi Modern
