@@ -1,4 +1,6 @@
-### activity diagram
+### Activity Diagram
+
+```mermaid
 graph TD
     A[User Mengakses Sistem] --> B{User Sudah Login?}
     B -->|Tidak| C[Tampilkan Halaman Login]
@@ -171,3 +173,4 @@ graph TD
     class B,E,I,L,O,R,V,CC,GG,MM,PP,SS,ZZ,HHH,MMM,UUU,CCCC,FFFF decision
     class K,N,Q,EE,UU error
     class FF,TTT,BBBB,JJJJ success
+```
