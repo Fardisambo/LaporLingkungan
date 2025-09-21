@@ -5,8 +5,10 @@ Platform pelaporan lingkungan modern yang memudahkan masyarakat melaporkan masal
 
 ## Screenshot
 
-## - balsamiq
+### # balsamiq
 ![image alt](https://github.com/Fardisambo/LaporLingkungan/blob/4694359a25d83d1ef0d030342edad24bafc4f773/screenshot/Screenshot%202025-09-21%20112440.png)
+
+##
 
 ### 1. Dashboard
 ![image alt](https://github.com/Fardisambo/LaporLingkungan/blob/9382458110e59130312e3a3922f13f0d53e57fbc/screenshot/Screenshot%202025-09-18%20192640.png)
